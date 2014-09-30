@@ -12,11 +12,18 @@ int main()
 	double serviceCharge = 7.50, perkm = 3.25,x,y,dy,dx,distance = 0.0;
 	int numstops;
 	char NS, WE;
-	ifstream routes("taxiDir_rev.txt");
+//	ifstream routes("taxiDir_rev.txt");
+	ifstream routes("text.txt");
 	
-	for(int a = 0; a < 2; a++)
+	if(!routes)
 	{
-		routes >> numstops;
+		cout << "Unable to open file" << endl;
+		return EXIT_FAILURE;
+	}
+	
+	
+	while((routes >> numstops) != false)
+	{
 		for(int i = 0; i < numstops; i++)
 		{
 			routes >> dy;
@@ -31,6 +38,7 @@ int main()
 				dx *= -1;
 			cout << dx << endl;
 		}
+		cout << endl;
 	}
 	
 	return EXIT_SUCCESS;
