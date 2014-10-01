@@ -1,5 +1,5 @@
 //Nicholash Bedi
-//Assignment 4 question 2
+//Assignment 4 question 3 testing
 #include<iostream>
 #include<fstream>
 #include<cmath>
@@ -7,7 +7,18 @@
 #include<cstdlib>
 using namespace std;
 
-double findx( 	double b, double h, double incriment = 1, double x = 0)
+int getlength(double v)
+{
+	if (v == 0)
+		return 0;
+	else if(v>0)
+		return floor(log10(fabs(v)))+1;
+	else
+		return -(floor(log10(fabs(v)))+1);
+		
+}
+
+double findx(double b, double h, double incriment = 1, double x = 0)
 {
 	double v=(b-2*x)*(h-2*x)*x, pv;
 	cout << "x initial " << x << endl;
@@ -30,46 +41,42 @@ int main()
 	double b,h;
 //	cout << "Enter base then height" << endl;
 //	cin >> b >> h;
-	b = 25;
-	h = 125;
-	
-	double xc,vc;
-	//WITH CALCULUS
-	xc = (1.0/6.0)*(b + h - sqrt(b*b - b*h + h*h));
-	vc = (b-2*xc)*(h-2*xc)*xc;
-	cout	<< fixed << setprecision(4) <<"volume: " << vc << endl
-			<< "x: "<< xc << " with CALCULUS!!!" << endl;
+	b = 600;
+	h = 600;
 	
 	
 	//b = 6 h = 6 means x =1
 	//b = 12 h = 12 means x =2 
 	
-	
-	///INITIALY MADE FUNCTION
-	double x = 0, v = 0, pv = 0;
-	if(b > 12 && h > 12)
-	{
-		do
-		{
-			x++;
-			pv = v;
-			v = (b-2*x)*(h-2*x)*x;
-		}while(v > pv);
-		cout << "int brute force x: " << --x << endl;
-	}
-	cout << endl;
-	
-	
 	//TRYING ABOVE FUNCTION
-	x = 5;
-	for (double incriment = 1.0; incriment >= 0.0001; incriment /= 10.0)
+	double minInput = 0;
+	if(b < h)
+		minInput = b;
+	else
+		minInput = h;
+	cout <<"mininput is: " << minInput << endl;
+	double incriment = pow(10,(getlength(minInput/6.0)-2));
+	
+	
+	double x = incriment * 5;
+	for (; incriment >= 1e-8; incriment /= 10.0)
 	{
 		x -= 5*(incriment);
-//		cout << x << endl;
 		x = findx(b,h,incriment,x);
 		cout << x << endl << endl;
 	}
-	cout << " Funtion method x; " << x << endl;
-
-
+	cout 	<< fixed << setprecision(8)
+			<< "Bruted x; \t\t" << x << endl;
+	
+		
+	
+	double xc,vc;
+	//WITH CALCULUS
+	xc = (1.0/6.0)*(b + h - sqrt(b*b - b*h + h*h));
+	vc = (b-2*xc)*(h-2*xc)*xc;
+	cout	<< "With CALCULUS!!! x:\t" << xc << endl
+	
+			<< "\nVolume with calc: " << vc << endl
+			<< "Volume with brute: " << (b-2*x)*(h-2*x)*x;
 }
+
