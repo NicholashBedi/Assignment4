@@ -7,6 +7,8 @@
 #include<cstdlib>
 using namespace std;
 
+
+//RANDOM CODE
 int main()
 {
 	double serviceCharge = 7.50, perkm = 3.25,x,y,dy,dx,distance = 0.0;
