@@ -68,7 +68,7 @@ int main()
 	DandC 	<< setfill('-') << setw(65) << '-' << endl
 			<< "      Total |" << setfill(' ') << setw(26) << ' '
 			<< setw(11) << distanceTotal << " |"
-			<< setw(11) << costTotal 	<< " |" 
+			<< setw(11) << costTotal << " |" 
 			<< endl;
 	
 	
