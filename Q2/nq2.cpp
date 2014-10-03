@@ -64,10 +64,8 @@ int main()
 		Lon = convDeg(DegIntLon, DegMinLon);
 		dx = Xcoor(Lat, Lon) - initX;
 		dy = Ycoor(Lat) - initY;
-		cout << dx << " " << dy << endl << endl;
 		angle = toDegrees(atan2(dx,dy));
-		cout << "Angle: " << angle << endl;
-		
+		cout << sqrt(dx*dx+dy*dy) << " km in the direction" << endl;
 		if (angle == 0)
 			cout << "North (0 degrees)" << endl;
 		else if (angle == 90)
@@ -84,9 +82,31 @@ int main()
 			cout << "South " << 180-angle << " degrees East" << endl;
 		else if (angle < -90)
 			cout << "South " << angle -180 << " degrees West" << endl;
-
+		cout << endl;
 	}
 	 
 	
 	return EXIT_SUCCESS;
 }
+/*
+382.058 km in the direction
+North 31.0108 degrees West
+
+527.084 km in the direction
+South 33.7117 degrees East
+
+360.469 km in the direction
+South -291.054 degrees West
+
+1769.64 km in the direction
+North 24.9915 degrees West
+
+221.513 km in the direction
+North 24.4489 degrees East
+
+135.218 km in the direction
+North 87.6477 degrees West
+
+1415.07 km in the direction
+North 77.5426 degrees East
+*/

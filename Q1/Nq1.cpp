@@ -16,8 +16,7 @@ int main()
 			locationX = 0.0, locationY = 0.0;
 	int numstops;
 	char NS, WE;
-//	ifstream routes("taxiDir_rev.txt");
-	ifstream routes("test.txt");
+	ifstream routes("taxiDir_rev.txt");
 	
 	if(!routes)
 	{
